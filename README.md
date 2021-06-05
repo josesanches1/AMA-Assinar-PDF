@@ -14,3 +14,5 @@ Dependências:<br>
 		pdfa-7.1.15.jar<br>
 		sign-7.1.15.jar<br>
 		slf4j-api-1.7.30.jar<br>
+<br><br><br>
+<b><u>Agradece-se contributos</u></b>.
