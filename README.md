@@ -1,4 +1,4 @@
-Versão em java do projeto de Luís Abeu em C# em https://github.com/luisabreu/AmaCmdSigning<br>
+Versão em java do projeto de Luís Abreu em C# em https://github.com/luisabreu/AmaCmdSigning<br>
 <b>Esta versão deve ser considerada como um ponto de partida - não está funcional e carece de melhoramentos</b>. 
 
 Necessário configurar as variaveis da classe: Config.java<br>
