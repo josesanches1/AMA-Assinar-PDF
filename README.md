@@ -2,14 +2,15 @@ Versão em java do projeto de Luís Abreu em C# -> https://github.com/luisabreu/
 <b>Esta versão deve ser considerada como um ponto de partida - não está funcional e carece de melhoramentos</b>. 
 
 Funcionalidades:<br>
-	Obtém certficados utilizador<br>
+	Obtém certificados utilizador<br>
 	Cria assinatura vazia no PDF<br>
- 	Obtém hash do PDF a assinar, com prefixo da AMA<br>
+ 	Obtém hash do PDF a assinar, com o prefixo da AMA<br>
 	Cria pdf temporário com a assinatura vazia<br>
 	Envia hash para AMA<br>
 	AMA -> envio SMS para envio de hash assinada<br>
 	Obtenção de hash assinada e inclusão da mesma e PDF.
-	Criação do PDF assinado, mas <b>falha</b>.<br><br>
+	Criação do PDF assinado.<br>
+	Verificação da assinatura -> <b>falha</b>.<br><br>
 
 Necessário configurar as variaveis da classe: Config.java<br>
 Dependências:<br>
