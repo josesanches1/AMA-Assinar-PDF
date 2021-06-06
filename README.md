@@ -4,7 +4,7 @@ Versão em java do projeto de Luís Abreu em C# -> https://github.com/luisabreu/
 Funcionalidades:<br>
 	Obtém certficados utilizador<br>
 	Cria assinatura vazia no PDF<br>
- 	Obtém hash do PDF a assinar<br>
+ 	Obtém hash do PDF a assinar, com prefixo da AMA<br>
 	Cria pdf temporário com a assinatura vazia<br>
 	Envia hash para AMA<br>
 	AMA -> envio SMS para envio de hash assinada<br>
