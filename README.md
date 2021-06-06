@@ -5,9 +5,10 @@ Funcionalidades:<br>
 	Obtém certificados utilizador<br>
 	Cria assinatura vazia no PDF<br>
  	Obtém hash do PDF a assinar, com o prefixo da AMA<br>
-	Cria pdf temporário com a assinatura vazia<br>
+	Cria PDF temporário com a assinatura vazia<br>
 	Envia hash para AMA<br>
-	AMA -> envio SMS para envio de hash assinada<br>
+	AMA -> envio SMS<br>
+	Validação do codigo (recebido via SMS)
 	Obtenção de hash assinada e inclusão da mesma e PDF.
 	Criação do PDF assinado.<br>
 	Verificação da assinatura -> <b>falha</b>.<br><br>
