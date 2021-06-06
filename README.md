@@ -1,5 +1,15 @@
-Versão em java do projeto de Luís Abreu em C# em https://github.com/luisabreu/AmaCmdSigning<br>
+Versão em java do projeto de Luís Abreu em C# -> https://github.com/luisabreu/AmaCmdSigning<br>
 <b>Esta versão deve ser considerada como um ponto de partida - não está funcional e carece de melhoramentos</b>. 
+
+Funcionalidades:<br>
+	Obtém certficados utilizador<br>
+	Cria assinatura vazia no PDF<br>
+ 	Obtém hash do PDF a assinar<br>
+	Cria pdf temporário com a assinatura vazia<br>
+	Envia hash para AMA<br>
+	AMA -> envio SMS para envio de hash assinada<br>
+	Obtenção de hash assinada e cinclusão da mesma e PDF.
+	Criação do PDF assinado, mas <b>falha</b>.<br><br>
 
 Necessário configurar as variaveis da classe: Config.java<br>
 Dependências:<br>
