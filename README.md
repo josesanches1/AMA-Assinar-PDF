@@ -8,7 +8,7 @@ Funcionalidades:<br>
 	Cria pdf temporário com a assinatura vazia<br>
 	Envia hash para AMA<br>
 	AMA -> envio SMS para envio de hash assinada<br>
-	Obtenção de hash assinada e cinclusão da mesma e PDF.
+	Obtenção de hash assinada e inclusão da mesma e PDF.
 	Criação do PDF assinado, mas <b>falha</b>.<br><br>
 
 Necessário configurar as variaveis da classe: Config.java<br>
