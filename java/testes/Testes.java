@@ -24,9 +24,9 @@ import pt.iText.SigningInformation;
 
 public class Testes {
 	
-	/*Necessário configurar as variaveis da classe: Config.java
+	/*NecessÃ¡rio configurar as variaveis da classe: Config.java
 	 * 
-	 *Dependências:
+	 *DependÃªncias:
 	 	bcpkix-jdk15on-1.68.jar
 		bcprov-jdk15on-1.68.jar
 		commons-codec-1.15.jar
@@ -51,12 +51,12 @@ public class Testes {
 		 ****************************************/
 		String clientId = null;
 		Scanner sc= new Scanner(System.in); //System.in is a standard input stream.
-		System.out.print("Nº de telemovel: ");
+		System.out.print("NÂº de telemovel: ");
 		clientId = sc.nextLine();
 System.out.println("[aceite]");
 		X509Certificate[] chain = null;
 
-		//1ª chamada -> GetCertificate, obter os certificados do utilizador
+		//1Âª chamada -> GetCertificate, obter os certificados do utilizador
 		GetCertificate getCert = new GetCertificate(clientId);
 		chain = getCert.callEndPoint();
 		if(null == chain) {
@@ -83,7 +83,7 @@ System.out.println("[aceite]");
 																				"porque sim",
 																				"lx",
 																				logo));
-		//2ª chamada -> SCMDSign
+		//2Âª chamada -> SCMDSign
 		String hash4ama = new Criptografia().getBase64(hashInformation.getHashForSigning());
 		
 		/******************
@@ -115,7 +115,7 @@ System.out.println("[aceite]");
 		EntityValidateOtp validateOtpResp = validateOtp.callEndPoint();
 		System.out.println("[ValidateOtpResposta] status: " + validateOtpResp.getStatus().getCode());
 
-		byte[] assinadoAMA = validateOtpResp.getAssinatura().getBytes();
+		byte[] assinadoAMA = Base64.decodeBase64(validateOtpResp.getAssinatura().getBytes());
 		
 		SignatureInformation signaInfo = new SignatureInformation(
 				temporaryPdf,
