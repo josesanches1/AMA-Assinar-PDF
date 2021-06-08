@@ -8,8 +8,8 @@ Funcionalidades:<br>
 	Cria PDF temporário com a assinatura vazia<br>
 	Envia hash para AMA<br>
 	AMA -> envio SMS<br>
-	Validação do codigo (recebido via SMS)
-	Obtenção de hash assinada e inclusão da mesma e PDF.
+	Validação do codigo (recebido via SMS)<br>
+	Obtenção de hash assinada e inclusão da mesma e PDF.<br>
 	Criação do PDF assinado.<br>
 	Verificação da assinatura -> <b>falha</b>.<br>
 	O erro é: "`O documento foi alterado ou corrompido após a aplicação da assinatura`"
