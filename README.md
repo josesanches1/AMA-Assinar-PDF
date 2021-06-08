@@ -11,7 +11,9 @@ Funcionalidades:<br>
 	Validação do codigo (recebido via SMS)
 	Obtenção de hash assinada e inclusão da mesma e PDF.
 	Criação do PDF assinado.<br>
-	Verificação da assinatura -> <b>falha</b>.<br><br>
+	Verificação da assinatura -> <b>falha</b>.<br>
+	O erro é: "`O documento foi alterado ou corrompido após a aplicação da assinatura`"
+	<br><br>
 
 Necessário configurar as variaveis da classe: Config.java<br>
 Dependências:<br>
