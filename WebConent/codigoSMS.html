@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>Código SMS</title>
+
+<meta Http-Equiv="Cache-Control" Content="no-cache">
+<meta Http-Equiv="Pragma" Content="no-cache">
+<meta Http-Equiv="Expires" Content="0">
+<meta Http-Equiv="Pragma-directive: no-cache">
+<meta Http-Equiv="Cache-directive: no-cache">
+<link rel="shortcut icon" href="../img/favicon.ico" >
+
+<link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+<link rel="stylesheet" type="text/css" id="confirm" href="css/confirm/jquery-confirm.min.css">
+
+<style type="text/css">
+html, body {height: 100%;}
+html {height: 100%;}
+body {min-height: 100%;}
+
+.btn {display: inline-block;margin-bottom: 0;font-weight: normal;text-align: center;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;background-image: none;border: 1px solid transparent;white-space: nowrap;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;border-radius: 4px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+.btn:hover, .btn:focus, .btn.focus {color: #333;text-decoration: none;}
+.btn:focus, .btn.focus {outline: 0;box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);}
+
+.btn-default:hover {color: #333;background-color: #e6e6e6;border-color: #adadad;}
+.btn-default {color: #333;background-color:#fff;border-color: #ccc;}
+
+.btn-primary {color: #fff;background-color: #337ab7;border-color: #337ab7;}
+.btn-primary:hover {color: #fff;background-color: #286090;border-color: #204d74;}
+.btn-primary:focus, .btn-primary.focus {box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);}
+
+.btn-success {color: #fff;background-color: #5cb85c;border-color: #4cae4c;}
+.btn-success:hover {color: #fff;background-color: #218838;border-color: #1e7e34;}
+.btn-success:focus, .btn-success.focus {box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);}
+
+/*UPLOAD*/
+.box{font-size: 1.25rem; background-color: #c8dadf;position: relative;}
+.box.has-advanced-upload{outline: 2px dashed #92b0b3;outline-offset: -10px;-webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;transition: outline-offset .15s ease-in-out, background-color .15s linear;}
+.box.is-dragover{outline-offset: -20px;outline-color: #c8dadf;background-color: #fff;}
+.box__dragndrop,
+.box__icon{display: none;}
+.box.has-advanced-upload .box__dragndrop{display: inline;}
+.box.has-advanced-upload .box__icon{width: 100%;height: 80px;fill: #92b0b3;display: block;margin-bottom: 40px;}
+.box.is-uploading .box__input,
+.box.is-success .box__input,
+.box.is-error .box__input{visibility: hidden;}
+.box__uploading {display: none;}
+.box.is-uploading .box__uploading,
+.box.is-success 
+.box.is-error {display: block;position: absolute;top: 50%;right: 0;left: 0;-webkit-transform: translateY( -50% );transform: translateY( -50% );}
+.box__uploading{font-style: italic;}
+/*.box__success{-webkit-animation: appear-from-inside .25s ease-in-out;animation: appear-from-inside .25s ease-in-out;}*/
+@-webkit-keyframes appear-from-inside{
+from	{ -webkit-transform: translateY( -50% ) scale( 0 ); }
+75%		{ -webkit-transform: translateY( -50% ) scale( 1.1 ); }
+to		{ -webkit-transform: translateY( -50% ) scale( 1 ); }
+}
+@keyframes appear-from-inside{
+from	{ transform: translateY( -50% ) scale( 0 ); }
+75%		{ transform: translateY( -50% ) scale( 1.1 ); }
+to		{ transform: translateY( -50% ) scale( 1 ); }
+}
+.box__restart{font-weight: 700;}
+.box__restart:focus,
+.box__restart:hover{color: #39bfd3;}
+
+.js .box__file{width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;}
+.js .box__file + label{max-width: 80%;text-overflow: ellipsis;white-space: nowrap;cursor: pointer;display: inline-block;overflow: hidden;}
+.js .box__file + label:hover strong,
+.box__file:focus + label strong,
+.box__file.has-focus + label strong{color: #39bfd3;}
+.js .box__file:focus + label,
+.js .box__file.has-focus + label{outline: 1px dotted #000;outline: -webkit-focus-ring-color auto 5px;}
+.js .box__file + label *{}
+.no-js .box__file + label{display: none;}
+.no-js .box__button{display: block;}
+.box__button{font-weight: 700;color: #e5edf1;background-color: #39bfd3;display: none;padding: 8px 16px;margin: 40px auto 0;}
+.box__button:hover,
+.box__button:focus{background-color: #0f3c4b;}
+.box__file {width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;}
+#the-canvas {border: 1px solid black;direction: ltr;}
+
+.myCheckbox {display: none;}
+.myCheckbox + label {background-color: white;border: 1px solid #cacece;box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);padding: 9px;border-radius: 3px;display: inline-block;position: relative;}
+.myCheckbox + label:active, .myCheckbox:checked + label:active {box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);}
+.myCheckbox:checked + label {background-color: white;border: 1px solid #adb8c0;box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);color: #99a1a7;}
+.myCheckbox:checked + label:after {content: '\2714';font-size: 14px;position: absolute;top: 0px;left: 3px;color: #99a1a7;}
+.bigCheckbox + label {padding: 16px;}
+.bigCheckbox:checked + label:after {font-size: 26px;left: 5px;}
+.myCheckbox[disabled] + label,
+.myCheckbox[readonly] + label{background-color: #eee; color:#979494;cursor: not-allowed;}
+
+.field{height:60px;position: relative;float:left;margin:2px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;border: 1px solid transparent;}
+</style>
+
+</head>
+<body class="page-container-boxed">
+    <div id="contentorPDF" class="page-container" style="height: 100%;">
+        <div class="page-content" style="margin-left:0px;height: 100%;">
+			<div class="page-title" style="background: #BDBDBD;border-color: #E5E5E5;height: 40px;">                    
+            	<h2><span class="fa"></span> Codigo SMS</h2>
+			</div>                   
+			<div class="page-content-wrap" style="border:1px solid blue;height: calc(100% - 42px);margin-top:2px;">
+				<div class="row" style="height: 100%;">
+					<div class="col-md-12" style="height: 100%;">
+						<div class="panel panel-default" style="height: 100%;">
+							<div class="panel-body" style="height: 100%;padding: 0px;margin: 0px;">
+								<div class="field" style="width: 200px;">
+									SMS: <div style="display:inline;color:red;">*</div><br>
+									<input class="form-control" style="width:100%px;float:left;" type="text" id="codigoSMS" maxlength="30">
+								</div>
+								<br style="clear:both;">
+								<button id="btSubmeter" class="btn btn-success" type="button" onclick="setSubmeter()" style="float:left;">Submeter</button>
+
+							</div>
+						</div>
+					</div>
+			     </div>
+			 </div>
+		</div>            
+	</div>
+<!-- START PLUGINS -->
+<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/plugins/blockUI/jquery-blockUI.js"></script>
+<script type="text/javascript" src="js/plugins/confirm/jquery-confirm.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+});
+/*******************************
+ * OUTRAS DIMENSÕES DO BROWSER *
+ *******************************/
+$(window).on("resize", function () {setResizeBrowser()});
+function setResizeBrowser(){
+	if($(window).width() < 1200){
+        if($("body").hasClass("page-container-boxed")){
+            $("body").removeClass("page-container-boxed").data("boxed","1");
+        }
+    }else{
+        if($("body").data("boxed") === "1"){
+            $("body").addClass("page-container-boxed").data("boxed","");
+        }
+    }
+}
+
+function setSubmeter(){
+	if( window.FormData === undefined ){
+		$.alert({useBootstrap:false,boxWidth:'380px',title:'Atenção',content:'O seu browser está desatualizado!'});
+		return false;
+	}
+	//objeto para enviar os dados para a servlet
+	var formData = new FormData();
+	//verificar se assinatura é visivel
+
+	if($("#codigoSMS").val()==""){
+		$.alert({useBootstrap:false,boxWidth:'380px',title:'Atenção',content:'O <b>codigoSMS</b> é de preenchimento obrigatório!'});
+		return false;
+	}
+
+	formData.append("codigoSMS", $("#codigoSMS").val());
+
+	$.blockUI();
+	$.ajax({
+		url:"CodigoSMS",
+		type: 'POST',
+		data : formData,
+		cache:false,
+		processData: false,
+		contentType: false,	//'multipart/form-data',
+		error:function(a,b,c){
+			$.unblockUI();
+			$.alert({useBootstrap:false,boxWidth:'350px',title:'Erro',content:'Devido a um erro interno,não foi possível efetuar a operação.'});
+		},
+		success: function(json){
+			$.unblockUI();
+			if(json.status==1){
+				window.location.replace("codigoSMS.html");
+			}else{
+				$.alert({useBootstrap:false,boxWidth:'380px',title:'Erro:',content:"Não foi possivel efetuar a solicitação.<br>[" + json.status + "]"});
+			}
+    	}
+	});
+}
+</script>
+</body>
+</html>

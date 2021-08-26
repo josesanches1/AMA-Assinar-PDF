@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<title>Testes</title>
+
+<meta Http-Equiv="Cache-Control" Content="no-cache">
+<meta Http-Equiv="Pragma" Content="no-cache">
+<meta Http-Equiv="Expires" Content="0">
+<meta Http-Equiv="Pragma-directive: no-cache">
+<meta Http-Equiv="Cache-directive: no-cache">
+<link rel="shortcut icon" href="../img/favicon.ico" >
+
+<link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+<link rel="stylesheet" type="text/css" id="confirm" href="css/confirm/jquery-confirm.min.css">
+
+<style type="text/css">
+html, body {height: 100%;}
+html {height: 100%;}
+body {min-height: 100%;}
+
+.btn {display: inline-block;margin-bottom: 0;font-weight: normal;text-align: center;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;background-image: none;border: 1px solid transparent;white-space: nowrap;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;border-radius: 4px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+.btn:hover, .btn:focus, .btn.focus {color: #333;text-decoration: none;}
+.btn:focus, .btn.focus {outline: 0;box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);}
+
+.btn-default:hover {color: #333;background-color: #e6e6e6;border-color: #adadad;}
+.btn-default {color: #333;background-color:#fff;border-color: #ccc;}
+
+.btn-primary {color: #fff;background-color: #337ab7;border-color: #337ab7;}
+.btn-primary:hover {color: #fff;background-color: #286090;border-color: #204d74;}
+.btn-primary:focus, .btn-primary.focus {box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);}
+
+.btn-success {color: #fff;background-color: #5cb85c;border-color: #4cae4c;}
+.btn-success:hover {color: #fff;background-color: #218838;border-color: #1e7e34;}
+.btn-success:focus, .btn-success.focus {box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);}
+
+/*UPLOAD*/
+.box{font-size: 1.25rem; background-color: #c8dadf;position: relative;}
+.box.has-advanced-upload{outline: 2px dashed #92b0b3;outline-offset: -10px;-webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;transition: outline-offset .15s ease-in-out, background-color .15s linear;}
+.box.is-dragover{outline-offset: -20px;outline-color: #c8dadf;background-color: #fff;}
+.box__dragndrop,
+.box__icon{display: none;}
+.box.has-advanced-upload .box__dragndrop{display: inline;}
+.box.has-advanced-upload .box__icon{width: 100%;height: 80px;fill: #92b0b3;display: block;margin-bottom: 40px;}
+.box.is-uploading .box__input,
+.box.is-success .box__input,
+.box.is-error .box__input{visibility: hidden;}
+.box__uploading {display: none;}
+.box.is-uploading .box__uploading,
+.box.is-success 
+.box.is-error {display: block;position: absolute;top: 50%;right: 0;left: 0;-webkit-transform: translateY( -50% );transform: translateY( -50% );}
+.box__uploading{font-style: italic;}
+/*.box__success{-webkit-animation: appear-from-inside .25s ease-in-out;animation: appear-from-inside .25s ease-in-out;}*/
+@-webkit-keyframes appear-from-inside{
+from	{ -webkit-transform: translateY( -50% ) scale( 0 ); }
+75%		{ -webkit-transform: translateY( -50% ) scale( 1.1 ); }
+to		{ -webkit-transform: translateY( -50% ) scale( 1 ); }
+}
+@keyframes appear-from-inside{
+from	{ transform: translateY( -50% ) scale( 0 ); }
+75%		{ transform: translateY( -50% ) scale( 1.1 ); }
+to		{ transform: translateY( -50% ) scale( 1 ); }
+}
+.box__restart{font-weight: 700;}
+.box__restart:focus,
+.box__restart:hover{color: #39bfd3;}
+
+.js .box__file{width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;}
+.js .box__file + label{max-width: 80%;text-overflow: ellipsis;white-space: nowrap;cursor: pointer;display: inline-block;overflow: hidden;}
+.js .box__file + label:hover strong,
+.box__file:focus + label strong,
+.box__file.has-focus + label strong{color: #39bfd3;}
+.js .box__file:focus + label,
+.js .box__file.has-focus + label{outline: 1px dotted #000;outline: -webkit-focus-ring-color auto 5px;}
+.js .box__file + label *{}
+.no-js .box__file + label{display: none;}
+.no-js .box__button{display: block;}
+.box__button{font-weight: 700;color: #e5edf1;background-color: #39bfd3;display: none;padding: 8px 16px;margin: 40px auto 0;}
+.box__button:hover,
+.box__button:focus{background-color: #0f3c4b;}
+.box__file {width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;}
+#the-canvas {border: 1px solid black;direction: ltr;}
+
+.myCheckbox {display: none;}
+.myCheckbox + label {background-color: white;border: 1px solid #cacece;box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);padding: 9px;border-radius: 3px;display: inline-block;position: relative;}
+.myCheckbox + label:active, .myCheckbox:checked + label:active {box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);}
+.myCheckbox:checked + label {background-color: white;border: 1px solid #adb8c0;box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);color: #99a1a7;}
+.myCheckbox:checked + label:after {content: '\2714';font-size: 14px;position: absolute;top: 0px;left: 3px;color: #99a1a7;}
+.bigCheckbox + label {padding: 16px;}
+.bigCheckbox:checked + label:after {font-size: 26px;left: 5px;}
+.myCheckbox[disabled] + label,
+.myCheckbox[readonly] + label{background-color: #eee; color:#979494;cursor: not-allowed;}
+
+.field{height:60px;position: relative;float:left;margin:2px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;border: 1px solid transparent;}
+</style>
+
+</head>
+<body>
+	<form method="post" action="#" enctype="multipart/form-data" class="box" style="border: 1px solid red;height: 100%">
+		<div class="box__input" style="text-align: center;border:1px dashed gray;min-height: 100%;max-height: 100%;width: 1200px;margin:auto;">
+			<svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43" viewBox="0 0 50 43">
+				<path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"/>
+			</svg>
+			<input type="file" name="filePDF" id="filePDF" class="box__file" />
+			<label for="filePDF"><strong style="cursor: pointer;">Selecione um ficheiro</strong><span class="box__dragndrop"> ou arraste-o para aqui</span>.</label>
+			<button type="submit" class="box__button">Upload</button>
+			<div class="box__uploading" style="text-align: center">Por favor aguarde. A processar a informação&hellip;</div>
+		</div>
+	</form>
+    <div id="contentorPDF" class="page-container" style="display:none;height: 100%;">
+        <div class="page-content" style="margin-left:0px;height: 100%;">
+			<div class="page-title" style="background: #BDBDBD;border-color: #E5E5E5;height: 40px;">                    
+            	<h2><span class="fa"></span> Assinar PDF</h2>
+			</div>                   
+			<div class="page-content-wrap" style="border:1px solid blue;height: calc(100% - 42px);margin-top:2px;">
+				<div class="row" style="height: 100%;">
+					<div class="col-md-12" style="height: 100%;">
+						<div class="panel panel-default" style="height: 100%;">
+							<div class="panel-body" style="height: 100%;padding: 0px;margin: 0px;">
+								<div style="float:left;width:220px;margin-left:3px;">
+									<div id="divAceita" style="width: 220px;float:left;display:none;">
+										Pretende assinar este documento?<br>
+										<button class="btn btn-primary" type="button" onclick="setAceitarPDF()" style="float:left;margin-right:10px;">Sim</button>
+										<button class="btn-default btn" type="button" onclick="setNaoAceitaPDF()" style="float:left;">Não</button>
+									</div>
+									<div id="divAssinaturaVisivel" style="width: 220px;float:left;display:none;">
+										<div id="divCheckVisivel" style="width: 220px;height: 38px;">
+											<input type="checkbox" id="isVisivel" name="isVisivel" class="myCheckbox bigCheckbox" onclick="setVisivel(this)"/><label for="isVisivel" style="float:left;margin:0px 5px 0px 3px"></label>
+											<span style="float:left;margin-top: 8px;">Assinatura visível no documento:</span>
+										</div>
+										<div id="divUserCredenciais" style="width: 220px;margin-bottom:5px;">
+											<div class="field" style="width: 200px;">
+												Número de Telemóvel: <div style="display:inline;color:red;">*</div><br>
+												<input class="form-control" style="width:100%px;float:left;" type="text" id="telemovel" maxlength="30" value="+351 962316947">
+											</div>
+											<div class="field" style="width: 200px;">
+												PIN: <div style="display:inline;color:red;">*</div><br>
+												<input class="form-control" style="width:100%px;float:left;" type="password" id="pin" maxlength="8" value="0520">
+											</div>
+										</div>
+										<div id="divUserInfo" style="width: 220px;display:none;margin-bottom:5px">
+											<div class="field" style="width: 200px;">
+												Motivo: <div style="display:inline;color:red;">*</div><br>
+												<input class="form-control" style="width:100%px;float:left;" type="text" id="motivo" maxlength="30" value="motivo">
+											</div>
+											<div class="field" style="width: 200px;">
+												Local: <div style="display:inline;color:red;">*</div><br>
+												<input class="form-control" style="width:100%px;float:left;" type="text" id="local" maxlength="30" value="Forcalhos">
+											</div>
+											<br style="clear:both;">
+											<button id="btDefineArea" class="btn-default btn" type="button" onclick="setDefinirAreaAssinatura()" style="float:left;margin-top:5px;">Posicionar assinatura</button>
+											<button id="btAceitarArea" class="btn-success btn" type="button" onclick="setAceitarAreaAssinatura()" style="float:left;margin:5px 5px 5px 0px;display:none;">Aceitar</button>
+											<button id="btCancelaArea" class="btn-default btn" type="button" onclick="setCancelarAreaAssinatura()" style="float:left;margin:5px 0px 5px 0px;display:none;">Cancelar</button>
+										</div>
+										<button id="btSubmeter" class="btn btn-success" type="button" onclick="setSubmeter()" style="float:left;">Submeter</button>
+									</div>
+
+									
+									<br style="clear:both;">
+									<div id="pdfNav" style="bottom: 0px;position: absolute;display:none;margin-bottom: 3px;">
+									  	<button id="prev">Anterior</button>
+									  	<button id="next">Próximo</button>
+						  				&nbsp; &nbsp;
+						  				<span>Página: <span id="page_num"></span> / <span id="page_count"></span></span>
+						  			</div>
+								</div>
+								<canvas id="the-canvas" style="height: 100%;float:left;"></canvas>
+							</div>
+						</div>
+					</div>
+			     </div>
+			 </div>
+		</div>            
+	</div>
+<!-- START PLUGINS -->
+<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/plugins/blockUI/jquery-blockUI.js"></script>
+<script type="text/javascript" src="js/plugins/confirm/jquery-confirm.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.5.207/pdf.js"></script>
+
+<script type="text/javascript">
+var ASSINATURAINFO={
+	posX: -1,
+	posY: -1,
+	pagW: -1,
+	pagH: -1,
+	pagina: -1
+};
+$(document).ready(function(){
+	var isAdvancedUpload = function(){
+		var div = document.createElement( 'div' );
+		return ( ( 'draggable' in div ) || ( 'ondragstart' in div && 'ondrop' in div ) ) && 'FormData' in window && 'FileReader' in window;
+	}();
+	
+	// applying the effect for every form
+	$( '.box' ).each( function(){
+		var $form		 = $( this ),
+			$input		 = $form.find( 'input[type="file"]' ),
+			$label		 = $form.find( 'label' ),
+			$restart	 = $form.find( '.box__restart' ),
+			droppedFiles = false,
+			showFiles	 = function( files ){
+				$label.text('Por favor, aguarde...');
+			};
+
+		//tipo de ação
+		//O ficheiro é submetido de forma automática 
+		$input.on( 'change', function( e ){
+			showFiles( e.target.filePDF );
+			$form.trigger( 'submit' );
+		});
+
+
+		// drag&drop files if the feature is available
+		if( isAdvancedUpload ){
+			$form
+				.addClass( 'has-advanced-upload' ) // letting the CSS part to know drag&drop is supported by the browser
+				.on( 'drag dragstart dragend dragover dragenter dragleave drop', function( e ){
+					// preventing the unwanted behaviours
+					e.preventDefault();
+					e.stopPropagation();
+				})
+			.on( 'dragover dragenter', function(){
+				$form.addClass( 'is-dragover' );
+			})
+			.on( 'dragleave dragend drop', function(){
+				$form.removeClass( 'is-dragover' );
+			})
+			.on( 'drop', function( e ){
+				droppedFiles = e.originalEvent.dataTransfer.files; // the files that were dropped
+				showFiles( droppedFiles );
+				$form.trigger( 'submit' ); // automatically submit the form on file drop
+			});
+		}
+		// Se o formulário for submetido
+		$form.on( 'submit', function( e ){
+			var file=droppedFiles?droppedFiles[0]:e.target.filePDF.files[0];			
+
+			if(file.type!="application/pdf"){
+				$.alert({useBootstrap:false,boxWidth:'380px',title:'Atenção:',content: "O tipo de ficheiro não é <b>pdf</pdf>."});
+				$label.html('<strong>Selecione um ficheiro</strong><span class="box__dragndrop"> ou arraste-o para aqui</span>.');
+				$form.removeClass( 'is-uploading' );
+				droppedFiles=false;
+				return false;
+			}
+			
+			var ext=file.name.split(".")[1];
+			if(null===ext || typeof ext=="undefined" || ext.toLowerCase()!="pdf"){
+				$.alert({useBootstrap:false,boxWidth:'380px',title:'Erro:',content: "Extensão do ficheiro desconhecida. Espera-se <b>pdf</b>."});
+				$label.html('<strong>Selecione um ficheiro</strong><span class="box__dragndrop"> ou arraste-o para aqui</span>.');
+				$form.removeClass( 'is-uploading' );
+				droppedFiles=false;
+				return false;
+			}
+			if(file.size>5242880){//5 MB
+				$.alert({useBootstrap:false,boxWidth:'380px',title:'Erro:',content: "O ficheiro que adicionou é superior a 5 MB."});
+				$label.html('<strong>Selecione um ficheiro</strong><span class="box__dragndrop"> ou arraste-o para aqui</span>.');
+				$form.removeClass( 'is-uploading' );
+				droppedFiles=false;
+				return false;
+			}
+			
+			// previne multiplos upload's. Bloqueia se estiver a decorrer um upload.
+			if( $form.hasClass( 'is-uploading' ) ) return false;
+			$form.addClass( 'is-uploading' ).removeClass( 'is-error' );
+			// ajax file upload for modern browsers
+			if( isAdvancedUpload ){
+				e.preventDefault();
+				// reunindo os dados do formulário
+				var ajaxData = new FormData();
+				if(typeof file !== typeof undefined && null!=file && file.size>0){
+					ajaxData.append("filePDF", file);
+				}else{
+					$.alert({useBootstrap:false,boxWidth:'380px',title:'Erro:',content: "Problemas internos no browser no processamento do ficheiro.<br><br>Tente novamente."});
+					$label.html('<strong>Selecione um ficheiro</strong><span class="box__dragndrop"> ou arraste-o para aqui</span>.');
+					$form.removeClass( 'is-uploading' );
+					droppedFiles=false;
+					return false;
+				}
+				_JSON=null;
+				$("#btErrorDownload").hide();
+				$("#btNovoUpload").hide();
+				//Ativa o pdf
+				$("form").hide();
+				$("body").addClass("page-container-boxed");
+				$("div#contentorPDF").show();
+				$("div#divAceita").show();
+				setViewPDF(file);
+			}else{
+				// fallback Ajax solution upload for older browsers
+				var iframeName	= 'uploadiframe' + new Date().getTime(),
+					$iframe		= $( '<iframe name="' + iframeName + '" style="display: none;"></iframe>' );
+				$( 'body' ).append( $iframe );
+				$form.attr( 'target', iframeName );
+
+				$iframe.one( 'load', function(){
+					var data = $.parseJSON( $iframe.contents().find( 'body' ).text() );
+					$form.removeClass( 'is-uploading' );
+alert("OK");
+					$iframe.remove();
+				});
+			}
+		});
+	});
+});
+/*******************************
+ * OUTRAS DIMENSÕES DO BROWSER *
+ *******************************/
+$(window).on("resize", function () {setResizeBrowser()});
+function setResizeBrowser(){
+	if($(window).width() < 1200){
+        if($("body").hasClass("page-container-boxed")){
+            $("body").removeClass("page-container-boxed").data("boxed","1");
+        }
+    }else{
+        if($("body").data("boxed") === "1"){
+            $("body").addClass("page-container-boxed").data("boxed","");
+        }
+    }
+}
+function setAceitarPDF(){
+	$("#divAceita").hide();
+	$("#divAssinaturaVisivel").show();
+
+}
+function setNaoAceitaPDF(){
+var canvas = document.getElementById('the-canvas');
+
+	$("form").show();
+	$("form").removeClass('is-uploading');
+	$("form").find( 'label').html('<strong>Selecione um ficheiro</strong><span class="box__dragndrop"> ou arraste-o para aqui</span>.');
+	
+	$("body").removeClass("page-container-boxed");
+	$("div#contentorPDF").hide();
+	$("#divAceita").hide();
+	$("#pdfNav").hide();
+	//limpar canvas
+	const context = canvas.getContext('2d');
+	context.clearRect(0, 0, canvas.width, canvas.height);
+}
+function setVisivel(o){
+	$("#motivo").val("");
+	$("#local").val("");
+	if($(o).is(":checked")){
+		$("#divUserInfo").show();
+		$("#btSubmeter").hide();
+	}else{
+		$("#divUserInfo").hide();
+		$("#btSubmeter").show();
+	}
+}
+function setDefinirAreaAssinatura(){
+	$("#btAceitarArea").show();
+	$("#btCancelaArea").show();
+	$("#btDefineArea").hide();
+	myDragDrop = new DragDrop("the-canvas", _escalaPDF);
+}
+function setAceitarAreaAssinatura(){
+	if(null != myDragDrop) myDragDrop.setCancelaDrag()
+	$("#btAceitarArea").hide();
+	$("#btCancelaArea").hide();
+	$("#btSubmeter").show();
+	//Guardar a informação da localização da assinatura
+	var bodyRect = document.body.getBoundingClientRect();
+	ASSINATURAINFO.posX = $('div._PDF_Cx_Assinatura')[0].offsetLeft - Math.round($("#the-canvas").offset().left) - Math.abs(bodyRect.left);
+	ASSINATURAINFO.posY = $('div._PDF_Cx_Assinatura')[0].offsetTop - Math.round($("#the-canvas").offset().top) - Math.abs(bodyRect.top);
+	ASSINATURAINFO.pagW = $("#the-canvas").width();
+	ASSINATURAINFO.pagH = $("#the-canvas").height();
+	ASSINATURAINFO.pagina = pageNum;
+	$("div#divCheckVisivel").hide();
+	$("div#divUserCredenciais").show();
+}
+function setCancelarAreaAssinatura(){
+	if(null!=myDragDrop){
+		myDragDrop.hide();
+		$('div._PDF_Cx_Assinatura').remove();
+	}
+	myDragDrop = null;
+	$("#btAceitarArea").hide();
+	$("#btCancelaArea").hide();
+	$("#btDefineArea").show();
+}
+function setSubmeter(){
+	if( window.FormData === undefined ){
+		$.alert({useBootstrap:false,boxWidth:'380px',title:'Atenção',content:'O seu browser está desatualizado!'});
+		return false;
+	}
+	//objeto para enviar os dados para a servlet
+	var formData = new FormData();
+	//verificar se assinatura é visivel
+	if(null != myDragDrop){
+		if($("#motivo").val()==""){
+			$.alert({useBootstrap:false,boxWidth:'380px',title:'Atenção',content:'O <b>motivo</b> é de preenchimento obrigatório!'});
+			return false;
+		}
+		if($("#local").val()==""){
+			$.alert({useBootstrap:false,boxWidth:'380px',title:'Atenção',content:'O <b>local</b> é de preenchimento obrigatório!'});
+			return false;
+		}
+		formData.append("motivo", $("#motivo").val());
+		formData.append("local", $("#local").val());
+		formData.append("posX", ASSINATURAINFO.posX);
+		formData.append("posY", ASSINATURAINFO.posY);
+		formData.append("pagH", ASSINATURAINFO.pagH);
+		formData.append("pagW", ASSINATURAINFO.pagW);
+		formData.append("pagina", ASSINATURAINFO.pagina);
+	}
+	if($("#telemovel").val()==""){
+		$.alert({useBootstrap:false,boxWidth:'380px',title:'Atenção',content:'O <b>telemovel</b> é de preenchimento obrigatório!'});
+		return false;
+	}
+	if($("#pin").val()==""){
+		$.alert({useBootstrap:false,boxWidth:'380px',title:'Atenção',content:'O <b>pin</b> é de preenchimento obrigatório!'});
+		return false;
+	}
+	formData.append("telemovel", $("#telemovel").val());
+	formData.append("pin", $("#pin").val());
+	//ficheiro
+	formData.append("filePDF", _thePDF);
+/*
+for(var pair of formData.entries()) {
+   console.log(pair[0]+ ', '+ pair[1]);
+}
+	return false;
+*/
+	$.blockUI();
+	$.ajax({
+		url:"UploadPDF",
+		type: 'POST',
+		data : formData,
+		cache:false,
+		processData: false,
+		contentType: false,	//'multipart/form-data',
+		error:function(a,b,c){
+			$.unblockUI();
+			$.alert({useBootstrap:false,boxWidth:'350px',title:'Erro',content:'Devido a um erro interno,não foi possível efetuar a operação.'});
+		},
+		success: function(json){
+			$.unblockUI();
+			if(json.status==1){
+				window.location.replace("codigoSMS.html");
+			}else{
+				$.alert({useBootstrap:false,boxWidth:'380px',title:'Erro:',content:"Não foi possivel efetuar a solicitação.<br>[" + json.status + "]"});
+			}
+    	}
+	});
+}
+/*********************
+ * Tratamento do PDF *
+ *********************/
+var pageNum = 1;
+var canvas = document.getElementById('the-canvas');
+//var ctx = canvas.getContext('2d');
+var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+//The workerSrc property shall be specified.
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.5.207/pdf.worker.js';
+
+//********** DEFINIR E CARREGAR O PDF **********
+
+var _totalPaginas = 0;
+var _escalaPDF = 1;
+var _thePDF = null;
+function setViewPDF(file) {
+	_thePDF = file;
+	renderPDF(1);
+}
+function renderPDF(numPag){
+var fileReader = new FileReader();
+var _altura=_altura = $("#the-canvas").outerHeight(true);
+var _largura = $("#the-canvas").outerWidth(true);
+	
+	fileReader.onload = function() {
+		$.unblockUI();
+    	var typedarray = new Uint8Array(this.result);
+	    const loadingTask = pdfjsLib.getDocument(typedarray);
+    	loadingTask.promise.then(pdf => {
+
+	      // The document is loaded here...
+    	  //This below is just for demonstration purposes showing that it works with the moderen api
+		pdf.getPage(pageNum).then(function(page) {
+	        var canvas = document.getElementById('the-canvas');
+	        var context = canvas.getContext('2d');
+	        var viewport = page.getViewport({scale: 1});
+	        var vH=viewport.height;
+	        var vW=viewport.width;
+
+	        if(vW>vH){//landscape
+	        	_escalaPDF = _largura / viewport.width;
+	        }else{
+	        	_escalaPDF = _altura / viewport.height;
+	        }
+
+			viewport = page.getViewport({scale: _escalaPDF});
+			var h=_escalaPDF * vH;
+		
+	        canvas.height = h;
+	        canvas.width = viewport.width;
+	        
+	      	//inclusão das caixas
+	      	_totalPaginas = pdf.numPages;
+	      	document.getElementById('page_count').textContent = _totalPaginas;
+	      	if(_totalPaginas>1) $("#pdfNav").show();
+
+        	// Render PDF page into canvas context
+	        var renderContext = {
+				canvasContext: context,
+				viewport: viewport
+	        };
+	        var renderTask = page.render(renderContext);
+	        renderTask.promise.then(function() {
+	        	if(null != myDragDrop && ASSINATURAINFO.pagina == -1) myDragDrop.setRacio("the-canvas", _escalaPDF);
+	        	if(null != myDragDrop && ASSINATURAINFO.pagina > 0){
+	        		if(pageNum == ASSINATURAINFO.pagina) myDragDrop.show();
+	        		else myDragDrop.hide();
+	        	}
+	        });
+
+      	});
+      //end of example code
+    });
+  }
+  fileReader.readAsArrayBuffer(_thePDF);
+  // Update page counters
+  document.getElementById('page_num').textContent = pageNum;
+}
+//pagina seguinte
+function onPrevPage() {
+  	if (pageNum <= 1) return;
+  	$('div._PDFcaixa').remove();
+  	pageNum--;
+  	renderPDF(pageNum);
+}
+/**
+ * Displays next page.
+ */
+function onNextPage() {
+  if (pageNum >= _totalPaginas) return;
+  $('div._PDFcaixa').remove();
+  pageNum++;
+  renderPDF(pageNum);
+}
+document.getElementById('prev').addEventListener('click', onPrevPage);
+document.getElementById('next').addEventListener('click', onNextPage);
+/**********************
+ * Controlo drag&drop *
+ **********************/
+ 
+//definição do objeto
+var DragDrop = (function () { //https://stackoverflow.com/questions/55611/javascript-private-methods
+	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+	var elmnt = null;
+	var bodyRect = document.body.getBoundingClientRect();
+	
+	var posCanvasY = 0;
+	var posCanvasX = 0;
+	var canvasWith = 0;
+	var canvasHeight = 0;
+	
+	var racio = 1;
+	
+	var areaWidth = 200;
+	var areaHeight = 52;
+
+	// Constructor
+	function DragDrop(idCanvas, _racio) {
+		racio = _racio;
+		_setCanvas(idCanvas);
+		if($('div._PDF_Cx_Assinatura').length==0){
+			var obj= $('<div class="_PDF_Cx_Assinatura"></div>')
+				.css({
+					'position': 'absolute',
+					'z-index':999,
+					'top': 0 + posCanvasY,
+					'left': 0 + posCanvasX,
+					'height': areaHeight ,
+					'width': areaWidth,
+					'border': '1px solid red',
+					'cursor':'grab'
+				})
+				.appendTo('body')
+				.show()
+				.on('mousedown',dragMouseDown);
+			
+			elmnt = obj[0];
+		}
+	}
+
+	//metodos privados
+	function dragMouseDown(e) {
+	    e = e || window.event;
+	    e.preventDefault();
+	    // get the mouse cursor position at startup:
+	    pos3 = e.clientX;
+	    pos4 = e.clientY;
+	    document.onmouseup = closeDragElement;
+	    // call a function whenever the cursor moves:
+	    document.onmousemove = elementDrag;
+	}
+
+	function elementDrag(e) {
+	    e = e || window.event;
+	    e.preventDefault();
+	    // calculate the new cursor position:
+	    pos1 = pos3 - e.clientX;
+	    pos2 = pos4 - e.clientY;
+	    pos3 = e.clientX;
+	    pos4 = e.clientY;
+
+	    if(elmnt.offsetTop - pos2 < posCanvasY) return false;
+	    if(elmnt.offsetLeft - pos1 < posCanvasX) return false;
+
+	    if(elmnt.offsetLeft + elmnt.offsetWidth - pos1 > Math.round(posCanvasX + canvasWith)) return false;
+	    if(elmnt.offsetTop + elmnt.offsetHeight - pos2 > Math.round(posCanvasY + canvasHeight)) return false;
+	    
+	  	//set the element's new position:
+	    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+	    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+	}
+
+	function closeDragElement() {
+	    /* stop moving when mouse button is released:*/
+	    document.onmouseup = null;
+	    document.onmousemove = null;
+	}
+	
+	function setRactInside(){
+		if(null != elmnt){
+			//verificar se o "rectangulo" está dentro do canvas
+			//NOTA: podem existir paginas em paisagem e retrato
+			if(elmnt.offsetTop + elmnt.offsetHeight > Math.round(posCanvasY + canvasHeight)) elmnt.style.top = Math.round(posCanvasY + canvasHeight) - elmnt.offsetHeight + "px";
+			if(elmnt.offsetLeft + elmnt.offsetWidth > Math.round(posCanvasX + canvasWith)) elmnt.style.left = Math.round(posCanvasX + canvasWith) - elmnt.offsetWidth + "px";
+		}
+	}
+	
+	function _setCanvas(idCanvas){
+		posCanvasY = $("#"+idCanvas).offset().top + Math.abs(bodyRect.top);
+		posCanvasX = $("#"+idCanvas).offset().left + Math.abs(bodyRect.left);
+		canvasWith = $("#"+idCanvas).width();
+		canvasHeight = $("#"+idCanvas).height();
+		setRactInside();
+	}
+  	
+    //metodos públicos
+  	DragDrop.prototype.setCanvas = function (idCanvas) {
+  		_setCanvas(idCanvas);
+  	}
+    
+  	DragDrop.prototype.setRacio = function (idCanvas, _racio) {
+  		racio = _racio;
+  		if(null != elmnt){
+  			elmnt.style.height = areaHeight * racio;
+  			elmnt.style.width = areaWidth * racio;
+  			_setCanvas(idCanvas);
+  		}
+  	}
+  	
+  	DragDrop.prototype.hide = function () {
+  		elmnt.style.display= 'none';
+  	}
+  	
+  	DragDrop.prototype.show = function () {
+  		elmnt.style.display= 'block';
+  	}
+  	
+  	DragDrop.prototype.setCancelaDrag = function () {
+  		$(elmnt)
+  			.css('cursor','default')
+  			.off('mousedown');
+  	}
+    
+  	return DragDrop;
+}());
+
+//contem a função Drag & Drop
+var myDragDrop = null;
+
+</script>
+</body>
+</html>
